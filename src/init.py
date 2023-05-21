@@ -1,7 +1,10 @@
 from fastcrc import crc64 as crc
 from utils import *
+import downloader
 
 def init():
+    updater.checkForUpdate()
+    downloader.downloadAll()
     clean("WorkingFiles")
     version = getVersion()
     verify(version)
