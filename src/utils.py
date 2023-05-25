@@ -7,7 +7,7 @@ def clean(dir):
     for f in filelist:
         try:
             os.remove(f)
-        except:
+        except IsADirectoryError:
             pass
 
 
