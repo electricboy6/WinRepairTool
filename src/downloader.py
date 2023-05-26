@@ -49,21 +49,21 @@ def downloadSourceFiles():
     verify("11")
 
 def downloadAll():
-    with open("SourceFiles/downloadedSources.txt", "r") as f:
+    with open("src/SourceFiles/downloadedSources.txt", "r") as f:
         downloaded = f.read()
         f.close()
     if downloaded == "false":
         downloadVirusRemovalTools()
         #downloadUtilities()
         #downloadSourceFiles()
-        with open("SourceFiles/downloadedSources.txt", "w") as f:
+        with open("src/SourceFiles/downloadedSources.txt", "w") as f:
             f.write("true")
             f.close()
     elif input("Source files are already downloaded, do you want to download them again? (y/n) ") == "y":
         downloadVirusRemovalTools()
         #downloadUtilities()
         #downloadSourceFiles()
-        with open("SourceFiles/downloadedSources.txt", "w") as f:
+        with open("src/SourceFiles/downloadedSources.txt", "w") as f:
             f.write("true")
             f.close()
     else:
