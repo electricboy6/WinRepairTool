@@ -54,15 +54,15 @@ def downloadAll():
         f.close()
     if downloaded == "false":
         downloadVirusRemovalTools()
-        downloadUtilities()
-        downloadSourceFiles()
+        #downloadUtilities()
+        #downloadSourceFiles()
         with open("SourceFiles/downloadedSources", "w") as f:
             f.write("true")
             f.close()
     elif input("Source files are already downloaded, do you want to download them again? (y/n) ") == "y":
         downloadVirusRemovalTools()
-        downloadUtilities()
-        downloadSourceFiles()
+        #downloadUtilities()
+        #downloadSourceFiles()
         with open("SourceFiles/downloadedSources", "w") as f:
             f.write("true")
             f.close()
