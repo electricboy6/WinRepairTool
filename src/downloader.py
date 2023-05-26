@@ -43,9 +43,9 @@ def downloadSourceFiles():
     print("Downloading Win11 source file checksum...")
     r = requests.get("https://db.MYSITENAME.com/Win11.checksum", allow_redirects=True, timeout=5)
     open("SourceFiles/Win11/Source.checksum", "wb").write(r.content)
-    print("Verifying Win10 download...")
+    print("Verifying Win10 source download...")
     verify("10")
-    print("Verifying Win11 download...")
+    print("Verifying Win11 source download...")
     verify("11")
 
 def downloadAll():
