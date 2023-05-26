@@ -1,6 +1,6 @@
 from fastcrc import crc64 as crc
 from utils import *
-import downloader
+import downloader, updater
 
 def init():
     updater.checkForUpdate()
