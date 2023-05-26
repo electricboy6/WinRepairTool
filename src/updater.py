@@ -9,7 +9,6 @@ def checkForUpdate():
         print("Found update - Downloading...")
         r = requests.get("https://api.github.com/repos/electricboy6/WinRepairTool/releases/latest", allow_redirects=True, timeout=5)
         version = r.json()["tag_name"]
-        print(version)
         r = requests.get("https://github.com/electricboy6/WinRepairTool/archive/refs/tags/" + version + ".zip", allow_redirects=True, timeout=5)
         try:
             os.mkdir("src/newVersion")
