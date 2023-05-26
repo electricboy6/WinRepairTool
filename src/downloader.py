@@ -12,22 +12,22 @@ def downloadVirusRemovalTools():
     r = requests.get("https://adwcleaner.malwarebytes.com/adwcleaner?channel=release", allow_redirects=True, timeout=5)
     open("VirusRemovalTools/adwcleaner.exe", "wb").write(r.content)
 
-def downloadISOimages():
-    print("Downloading Win10 ISO image...")
-    r = requests.get("https://db.MYSITENAME.com/Win10.iso", allow_redirects=True, timeout=5)
+def downloadUtilities():
+    print("Downloading Win10 utilites...")
+    r = requests.get("https://db.MYSITENAME.com/Win10utils.zip", allow_redirects=True, timeout=5)
     open("SourceFiles/ISOimages/Win10.iso", "wb").write(r.content)
-    print("Downloading Win11 ISO image...")
-    r = requests.get("https://db.MYSITENAME.com/Win11.iso", allow_redirects=True, timeout=5)
-    open("SourceFiles/ISOimages/Win11.iso", "wb").write(r.content)
-    print("Downloading Win10 ISO checksum...")
-    r = requests.get("https://db.MYSITENAME.com/Win10iso.checksum", allow_redirects=True, timeout=5)
-    open("SourceFiles/ISOimages/Win10iso.checksum", "wb").write(r.content)
-    print("Downloading Win11 ISO checksum...")
-    r = requests.get("https://db.MYSITENAME.com/Win11iso.checksum", allow_redirects=True, timeout=5)
-    open("SourceFiles/ISOimages/Win11iso.checksum", "wb").write(r.content)
-    print("Verifying Win10 download...")
+    print("Downloading Win11 utilities...")
+    r = requests.get("https://db.MYSITENAME.com/Win11utils.zip", allow_redirects=True, timeout=5)
+    open("SourceFiles/ISOimages/Win11utils.zip", "wb").write(r.content)
+    print("Downloading Win10 utilities checksum...")
+    r = requests.get("https://db.MYSITENAME.com/Win10utils.checksum", allow_redirects=True, timeout=5)
+    open("SourceFiles/ISOimages/Win10utils.checksum", "wb").write(r.content)
+    print("Downloading Win11 utilities checksum...")
+    r = requests.get("https://db.MYSITENAME.com/Win11utils.checksum", allow_redirects=True, timeout=5)
+    open("SourceFiles/ISOimages/Win11utils.checksum", "wb").write(r.content)
+    print("Verifying Win10 utilities download...")
     verify("10")
-    print("Verifying Win11 download...")
+    print("Verifying Win11 utilities download...")
     verify("11")
 
 def downloadSourceFiles():
@@ -54,11 +54,11 @@ def downloadAll():
         f.close()
     if downloaded == "false":
         downloadVirusRemovalTools()
-        downloadISOimages()
+        downloadUtilities()
         downloadSourceFiles()
     elif input("Source files are already downloaded, do you want to download them again? (y/n) ") == "y":
         downloadVirusRemovalTools()
-        downloadISOimages()
+        downloadUtilities()
         downloadSourceFiles()
     else:
         pass
