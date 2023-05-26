@@ -9,16 +9,12 @@ name: Labeler
 on: [pull_request_target]
 
 jobs:
-  Code-Changed: 'src/'
-  Updater: 'src/updater.py'
-  Downloader: 'src/downloader.py'
-
-    runs_on: ubuntu-latest
+  label:
+  runs_on: 'ubuntu-latest'
     permissions:
       contents: read
       pull-requests: write
-
-    steps:
-    - uses: actions/labeler@v4
+      steps:
+        - uses: actions/labeler@v4
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
