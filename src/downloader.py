@@ -1,4 +1,4 @@
-import requests
+import requests, shutil
 from utils import *
 
 def downloadVirusRemovalTools():
@@ -15,20 +15,20 @@ def downloadVirusRemovalTools():
 def downloadUtilities():
     print("Downloading Win10 utilites...")
     r = requests.get("https://db.MYSITENAME.com/Win10utils.zip", allow_redirects=True, timeout=5)
-    open("SourceFiles/ISOimages/Win10.iso", "wb").write(r.content)
+    open("SourceFiles/utils/Win10utils.zip", "wb").write(r.content)
     print("Downloading Win11 utilities...")
     r = requests.get("https://db.MYSITENAME.com/Win11utils.zip", allow_redirects=True, timeout=5)
-    open("SourceFiles/ISOimages/Win11utils.zip", "wb").write(r.content)
+    open("SourceFiles/utils/Win11utils.zip", "wb").write(r.content)
     print("Downloading Win10 utilities checksum...")
     r = requests.get("https://db.MYSITENAME.com/Win10utils.checksum", allow_redirects=True, timeout=5)
-    open("SourceFiles/ISOimages/Win10utils.checksum", "wb").write(r.content)
+    open("SourceFiles/utils/Win10utils.checksum", "wb").write(r.content)
     print("Downloading Win11 utilities checksum...")
     r = requests.get("https://db.MYSITENAME.com/Win11utils.checksum", allow_redirects=True, timeout=5)
-    open("SourceFiles/ISOimages/Win11utils.checksum", "wb").write(r.content)
+    open("SourceFiles/utils/Win11utils.checksum", "wb").write(r.content)
     print("Verifying Win10 utilities download...")
-    verify("10")
+    verify("10utils")
     print("Verifying Win11 utilities download...")
-    verify("11")
+    verify("11utils")
 
 def downloadSourceFiles():
     print("Downloading Win10 source file...")
@@ -48,11 +48,28 @@ def downloadSourceFiles():
     print("Verifying Win11 source download...")
     verify("11")
 
+def init():
+    dirs = ["VirusRemovalTools", "SourceFiles/Win10", "SourceFiles/Win11", "SourceFiles/ISOimages"]
+    files = ["VirusRemovalTools/NPE.exe", "VirusRemovalTools/KVRT.exe", "VirusRemovalTools/adwcleaner.exe", "SourceFiles/utils/Win10utils.zip", "SourceFiles/utils/Win11utils.zip", "SourceFiles/utils/Win10utils.checksum", "SourceFiles/utils/Win11utils.checksum", "SourceFiles/Win10/Source.zip", "SourceFiles/Win11/Source.zip", "SourceFiles/Win10/Source.checksum", "SourceFiles/Win11/Source.checksum"]
+    for dir in dirs:
+        try:
+            shutil.rmtree(dir)
+            os.mkdir(dir)
+        except FileNotFoundError:
+            pass
+    for file in files:
+        try:
+            f = open(file, "x")
+            f.close()
+        except FileExistsError:
+            raise Exception("When trying to create a file that should've been deleted, a FileExistsError was raised.")
+
 def downloadAll():
     with open("src/SourceFiles/downloadedSources.txt", "r") as f:
         downloaded = f.read()
         f.close()
     if downloaded == "false":
+        init()
         downloadVirusRemovalTools()
         #downloadUtilities()
         #downloadSourceFiles()
@@ -60,6 +77,7 @@ def downloadAll():
             f.write("true")
             f.close()
     elif input("Source files are already downloaded, do you want to download them again? (y/n) ") == "y":
+        init()
         downloadVirusRemovalTools()
         #downloadUtilities()
         #downloadSourceFiles()

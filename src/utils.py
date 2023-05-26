@@ -20,11 +20,11 @@ def unzip(version, unzipDir, doClean):
 
 def verify(version):
     print("Generating checksum of source file...")
-    with open("SourceFiles/Win" + version + ".zip", "rb") as f:
+    with open("SourceFiles/Win" + version + "/Source.zip", "rb") as f:
         currentCheck = crc.ecma_182(f.read())
         f.close()
     print("Reading original checksum...")
-    with open("SourceFiles/Win" + version + ".checksum", "r") as f:
+    with open("SourceFiles/Win" + version + "/Source.checksum", "r") as f:
         originalCheck = f.read()
         f.close()
     if int(currentCheck) == int(originalCheck):
@@ -33,11 +33,19 @@ def verify(version):
         raise Exception("Source checksums do not match!")
     
 if __name__ == "__main__":
-    print("Generating checksum...")
-    with open("SourceFiles/Win10.zip", "rb") as f:
+    print("Generating Win10 checksum...")
+    with open("SourceFiles/Win10/Source.zip", "rb") as f:
         checksum = crc.ecma_182(f.read())
         f.close()
-    print("Writing checksum to file...")
-    with open("SourceFiles/Win10.checksum", "w") as f:
+    print("Writing Win10 checksum to file...")
+    with open("SourceFiles/Win10/Source.checksum", "w") as f:
+        f.write(str(checksum))
+        f.close()
+    print("Generating Win11 checksum...")
+    with open("SourceFiles/Win11/Source.zip", "rb") as f:
+        checksum = crc.ecma_182(f.read())
+        f.close()
+    print("Writing Win11 checksum to file...")
+    with open("SourceFiles/Win11/Source.checksum", "w") as f:
         f.write(str(checksum))
         f.close()
