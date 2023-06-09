@@ -4,13 +4,13 @@ from utils import *
 def downloadVirusRemovalTools():
     print("Downloading Norton Power Eraser...")
     r = requests.get("https://buy-download.norton.com/downloads/premium_services/NPE/x64/prod/NPE.exe", allow_redirects=True, timeout=5)
-    open("src/VirusRemovalTools/NPE.exe", "wb").write(r.content)
+    open("VirusRemovalTools/NPE.exe", "wb").write(r.content)
     print("Downloading Kaspersky Virus Removal Tool...")
     r = requests.get("https://usa.kaspersky.com/downloads/free-virus-removal-tool", allow_redirects=True, timeout=5)
-    open("src/VirusRemovalTools/KVRT.exe", "wb").write(r.content)
+    open("VirusRemovalTools/KVRT.exe", "wb").write(r.content)
     print("Downloading Malwarebytes AdwCleaner...")
     r = requests.get("https://adwcleaner.malwarebytes.com/adwcleaner?channel=release", allow_redirects=True, timeout=5)
-    open("src/VirusRemovalTools/adwcleaner.exe", "wb").write(r.content)
+    open("VirusRemovalTools/adwcleaner.exe", "wb").write(r.content)
 
 def downloadSourceFiles():
     print("Downloading Win10 source file...")
