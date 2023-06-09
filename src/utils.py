@@ -11,10 +11,10 @@ def clean(dir):
             pass
 
 
-def unzip(version, unzipDir, doClean):
+def unzip(file, unzipDir, doClean):
     if doClean:
         clean(unzipDir)
-    with ZipFile("SourceFiles/Win" + version + ".zip", 'r') as zip:
+    with ZipFile(file, 'r') as zip:
         zip.extractall(unzipDir)
         zip.close()
 

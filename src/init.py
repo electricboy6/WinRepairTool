@@ -8,7 +8,8 @@ def init():
     clean("WorkingFiles")
     version = getVersion()
     verify(version)
-    unzip(version, "WorkingFiles/Source", True)
+    unzip("SourceFiles/Win" + version + "/Source.zip", "WorkingFiles/Win" + version + "/Source", True)
+    unzip("SourceFiles/Win" + version + "/Checksums.zip", "WorkingFiles/Win" + version + "/Checksums", True)
 
 def getVersion():
     print("What version of Windows are you trying to repair? (10/11)")
