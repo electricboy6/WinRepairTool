@@ -13,8 +13,7 @@ def checkForUpdate():
         r = requests.get("https://github.com/electricboy6/WinRepairTool/archive/refs/tags/" + version + ".zip", allow_redirects=True, timeout=5)
         try:
             os.mkdir("src/newVersion")
-            f = open("src/newVersion/source.zip", "x")
-            f.close()
+            open("src/newVersion/source.zip", "x")
         except FileExistsError:
             pass
         open("src/newVersion/source.zip", "wb").write(r.content)
