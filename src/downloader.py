@@ -1,4 +1,4 @@
-import requests, shutil
+import requests
 from utils import *
 
 def downloadVirusRemovalTools():

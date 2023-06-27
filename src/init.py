@@ -1,8 +1,8 @@
-from fastcrc import crc64 as crc
 from utils import *
 import downloader, updater
 
 def init():
+    global version
     updater.checkForUpdate()
     downloader.downloadAll()
     clean("WorkingFiles")
