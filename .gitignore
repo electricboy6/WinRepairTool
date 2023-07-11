@@ -158,8 +158,9 @@ cython_debug/
 # Source download confirmation file
 src/SourceFiles/downloadedSources.txt
 
-# Virus removal tools
+# Virus removal tools + development specific tools
 VirusRemovalTools/
+devTools/
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
