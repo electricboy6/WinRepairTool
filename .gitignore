@@ -159,7 +159,9 @@ cython_debug/
 src/SourceFiles/downloadedSources.txt
 
 # Virus removal tools + development specific tools
-VirusRemovalTools/
+VirusRemovalTools/adwcleaner.exe
+VirusRemovalTools/KVRT.exe
+VirusRemovalTools/NPE.exe
 devTools/
 
 # PyCharm
