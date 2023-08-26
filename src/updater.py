@@ -1,11 +1,11 @@
-import requests, os
+import requests, os, json
 from zipfile import ZipFile
 
 def checkForUpdate():
     print("Checking for updates...")
     v = requests.get("https://raw.githubusercontent.com/electricboy6/WinRepairTool/main/program.version", allow_redirects=True, timeout=5)
     v = v.text
-    currentV = open("program.version").read()
+    currentV = json.load("metadata.json")["version"]
     if not v == currentV:
         print("Found update - Downloading...")
         r = requests.get("https://api.github.com/repos/electricboy6/WinRepairTool/releases/latest", allow_redirects=True, timeout=5)

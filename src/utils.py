@@ -18,6 +18,13 @@ def unzip(file, unzipDir, doClean):
         zip.extractall(unzipDir)
         zip.close()
 
+def unzipLarge(file, unzipDir, doClean):
+    if doClean:
+        clean(unzipDir)
+    with ZipFile(file, 'r', allowZip64=True) as zip:
+        zip.extractall(unzipDir)
+        zip.close()
+
 def verify(version):
     print("Generating checksum of source file...")
     with open("src/SourceFiles/Win" + version + "/Source.zip", "rb") as f:
